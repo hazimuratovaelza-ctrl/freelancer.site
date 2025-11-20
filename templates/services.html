@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Услуги</h2>
+<div class="row gy-3">
+  {% for s in services %}
+  <div class="col-md-6">
+    <div class="d-flex align-items-start gap-3 service-row card-hover p-3">
+      {% if s.image %}
+        <img src="{{ s.image.url }}" alt="{{ s.title }}" style="width:120px;height:80px;object-fit:cover;">
+      {% endif %}
+      <div>
+        <h5>{{ s.title }} <small class="text-muted">{{ s.price }} ₽</small></h5>
+        <p>{{ s.description }}</p>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>Услуги не добавлены.</p>
+  {% endfor %}
+</div>
+{% endblock %}

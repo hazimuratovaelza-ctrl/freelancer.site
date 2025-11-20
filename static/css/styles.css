@@ -1,0 +1,19 @@
+/* Light flat style + animations */
+:root{--accent:#2563eb; --muted:#6b7280; --bg:#ffffff; --card:#f8fafc;}
+body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background:var(--bg); color:#0f172a;}
+.site-header{background:var(--bg); position:sticky; top:0; z-index:50;}
+.btn-hover{transition: transform .18s ease, box-shadow .18s ease; border-radius:8px;}
+.btn-hover:hover{transform: translateY(-6px); box-shadow:0 12px 30px rgba(15,23,42,0.12);}
+.card-hover{transition: transform .18s ease, box-shadow .18s ease; border-radius:12px; overflow:hidden; background:var(--card); border: none;}
+.card-hover:hover{transform: translateY(-8px); box-shadow:0 18px 40px rgba(15,23,42,0.12);}
+.placeholder-img{background:#eef2ff; min-height:140px; display:flex; align-items:center; justify-content:center; color:var(--muted);}
+.device-mockup{background:linear-gradient(135deg,#f8fafc,#eef2ff); border-radius:14px; min-height:200px; display:flex; align-items:center; justify-content:center; color:var(--muted);}
+.fade-in{opacity:0; transform: translateY(10px); animation:fadeIn .7s forwards;}
+.fade-in.delay-1{animation-delay:.2s}
+.fade-in.delay-2{animation-delay:.4s}
+@keyframes fadeIn{to{opacity:1; transform:none}}
+/* responsive */
+@media (max-width:576px){
+  header nav{display:none}
+  .device-mockup{min-height:140px}
+}

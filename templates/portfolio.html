@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Портфолио</h2>
+<div class="row gy-3">
+  {% for item in items %}
+  <div class="col-md-4">
+    <div class="card card-hover">
+      {% if item.image %}
+        <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}">
+      {% else %}
+        <div class="placeholder-img">Фото проекта</div>
+      {% endif %}
+      <div class="card-body">
+        <h5>{{ item.title }}</h5>
+        <p>{{ item.description|truncatechars:120 }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

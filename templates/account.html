@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Аккаунт — сводка</h2>
+{% if user.is_authenticated %}
+  <div class="card p-3">
+    <h4>{{ user.get_full_name|default:user.username }}</h4>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p>Здесь можно добавить дополнительные сведения профиля.</p>
+    <a class="btn btn-sm btn-outline-primary btn-hover" href="{% url 'profile' %}">Редактировать профиль</a>
+  </div>
+{% else %}
+  <p>Вы не вошли. <a href="{% url 'login' %}">Войти</a> или <a href="{% url 'register' %}">зарегистрироваться</a>.</p>
+{% endif %}
+{% endblock %}

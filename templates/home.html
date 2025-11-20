@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <h1 class="fade-in">Привет — я Лиля, графический дизайнер</h1>
+      <p class="lead fade-in delay-1">Фриланс: дизайн, карточки на ВБ и Озон. Ниже — услуги и портфолио.</p>
+      <a class="btn btn-primary btn-hover mt-3" href="{% url 'portfolio' %}">Посмотреть портфолио</a>
+    </div>
+    <div class="col-md-6 text-center">
+      <div class="device-mockup fade-in delay-2">Здесь будет ваша фотография</div>
+    </div>
+  </div>
+</section>
+
+<section class="mt-5">
+  <h2 class="mb-4">Услуги</h2>
+  <div class="row gy-3">
+    {% for s in services %}
+    <div class="col-md-4">
+      <div class="card h-100 card-hover">
+        {% if s.image %}
+        <img src="{{ s.image.url }}" class="card-img-top" alt="{{ s.title }}">
+        {% else %}
+        <div class="card-img-top placeholder-img">Фото услуги</div>
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ s.title }}</h5>
+          <p class="card-text">{{ s.description|truncatechars:100 }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+          <small class="text-muted">{{ s.price }} ₽</small>
+          <a href="{% url 'prices' %}" class="btn btn-sm btn-outline-primary btn-hover">Посмотреть цены</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p>Услуг пока нет — добавьте в админке.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="mt-5">
+  <h2 class="mb-4">Короткое портфолио</h2>
+  <div class="row gy-3">
+    {% for it in portfolio %}
+    <div class="col-md-4">
+      <div class="portfolio-item card-hover">
+        {% if it.image %}
+        <img src="{{ it.image.url }}" class="img-fluid" alt="{{ it.title }}">
+        {% else %}
+        <div class="placeholder-img">Фото проекта</div>
+        {% endif %}
+        <h5 class="mt-2">{{ it.title }}</h5>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
