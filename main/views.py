@@ -26,3 +26,4 @@ def prices(request):
 
 def account_info(request):
     return render(request, 'account.html')
+

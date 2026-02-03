@@ -1,4 +1,9 @@
 import os
 from django.core.wsgi import get_wsgi_application
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'freelancer_django_site.settings')
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "<название_проекта>.settings")
 application = get_wsgi_application()
+
+if __name__ == "__main__":
+    from django.core.management import execute_from_command_line
+    execute_from_command_line(["manage.py", "runserver", f"0.0.0.0:{os.getenv('PORT')}"])

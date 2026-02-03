@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name:freelancer
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn freelancer.djan.site.wsgi:application
+    envVars:
+      - key: d34ha3h1cr(s!gd#lqc&s$@c2%9&uxl!!&(!r$*bj16w%*=yw@
+        generateValue: true
+      - key: DEBUG
+        value: "False"

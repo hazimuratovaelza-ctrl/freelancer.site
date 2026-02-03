@@ -1,10 +1,24 @@
 import os
+import sys
+import dj_database_url
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'replace-this-with-a-secure-key'
+SECRET_KEY = 'd34ha3h1cr(s!gd#lqc&s$@c2%9&uxl!!&(!r$*bj16w%*=yw@'
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [ 
+    'localhost',
+    '127.0.0.1',
+    '.onrender.com'
 
+]
+
+if 'RENDER' in os.environ:
+    ALLOWED_HOSTS = ['*']
+
+PORT = int(os.environ.get('PORT', '8080'))
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -24,6 +38,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'freelancer_django_site.urls'
@@ -48,8 +63,10 @@ WSGI_APPLICATION = 'freelancer_django_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 
+    'django.db.backends.sqlite3',
+        'NAME': BASE_DIR /
+     'db.sqlite3',
     }
 }
 
